@@ -1,7 +1,8 @@
 /* compiled by g++ -fpermissive -o changingReturnAdress changingReturnAdress.cpp 
 	g++ -v (version of g++):
 		gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3)
-		Target: x86_64-linux-gnu 
+		Target: x86_64-linux-gnu
+*/
 #include <stdio.h>
 
 void lol();
