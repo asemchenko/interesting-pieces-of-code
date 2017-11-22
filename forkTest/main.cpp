@@ -1,14 +1,18 @@
 #include <iostream>
 #include <unistd.h>
-int main() {
+#include <cstdlib>
+#include <string>
+int main(int argc, char** argv) {
     int countSubProcess = 2;
+    int countProcess = argc>1?atoi(argv[1]):15;
     int subprocessNumber = 0;
     char b[15] = "file00000";
     srand(time(0));
     start:
-    while(countSubProcess--)
+    while(countSubProcess-- && countProcess > 0)
     {
         ++subprocessNumber;
+	--countProcess;
         switch(fork())
         {
             case 0: // subprocess code
@@ -23,7 +27,7 @@ int main() {
         }
     }
     FILE* f = fopen(b,"w");
-    fprintf(f,"This file has been created by subprocess with number: %c",subprocessNumber);
+    fprintf(f,"This file has been created by subprocess with number: %d\n",subprocessNumber);
     fclose(f);
     return 0;
 }
